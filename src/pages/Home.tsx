@@ -4,12 +4,11 @@ import googleIconImg from '../assets/images/google-icon.svg';
 import '../styles/auth.scss';
 import { Button } from '../components/Button';
 import { useHistory } from 'react-router-dom';
-import { useContext } from 'react';
-import { AuthContext } from '../contexts/AuthContext';
+import { useAuth } from '../hooks/useAuth';
 
 export function Home() {
   const history = useHistory();
-  const { user, signInWithGoogle } = useContext(AuthContext);
+  const { user, signInWithGoogle } = useAuth();
 
   function handleCreateRoom() {
     if (!user) {
@@ -29,7 +28,6 @@ export function Home() {
         <p>Tire as dúvidas da sua audiênia em tempo real</p>
       </aside>
       <main className="main-content">
-        <div>
           <img src={logoImg} alt="letmeask" />
           <button className="create-room" onClick={handleCreateRoom}>
             <img src={googleIconImg} alt="logo do Google" />
@@ -45,7 +43,6 @@ export function Home() {
               Entrar na sala
             </Button>
           </form>
-        </div>
       </main>
     </div>
   );
